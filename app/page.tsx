@@ -3,18 +3,32 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
 
+// 🔧 定義你 fetch 回來的資料型別
+type ImageItem = {
+  title: string;
+  urls: {
+    regular: string;
+  };
+  user?: {
+    name: string;
+    links?: {
+      html?: string;
+    };
+  };
+};
+
 export default function FetchPage() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<ImageItem[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const loaderRef = useRef(null);
+  const loaderRef = useRef<HTMLDivElement | null>(null); // 加上 ref 型別
 
   const fetchMore = useCallback(async () => {
     if (loading) return;
     setLoading(true);
 
     const res = await fetch(`/api/search/${page}`);
-    const newData = await res.json();
+    const newData: ImageItem[] = await res.json();
     setData((prev) => [...prev, ...newData]);
     setPage((prev) => prev + 1);
     setLoading(false);
@@ -67,7 +81,6 @@ export default function FetchPage() {
               <h4>{item.title}</h4>
               <p>by {item.user?.name}</p>
             </Link>
-            
           </div>
         );
       })}
