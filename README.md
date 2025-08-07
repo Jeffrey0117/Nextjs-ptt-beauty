@@ -1,4 +1,13 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## INTRO
+
+web scraper for [ptt-beauty](https://www.ptt.cc/bbs/Beauty/index.html) 
+
+## DEMO
+
+
+[deploy by vercel](https://nextjs-ptt-beauty.vercel.app/)
+
+
 
 ## Getting Started
 
