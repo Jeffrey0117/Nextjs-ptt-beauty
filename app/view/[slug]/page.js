@@ -20,7 +20,7 @@ export default async function ImageViewPage({ params }) {
           {images.map((img, idx) => (
             <a key={idx} href={img.src} target="_blank" rel="noopener noreferrer">
               <img
-                src={img.thumb}
+                src={img.src}
                 alt={`圖片 ${idx + 1}`}
                 style={{ width: '100%', borderRadius: 8, objectFit: 'cover' }}
               />
